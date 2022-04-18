@@ -16,7 +16,7 @@ let authenticate= async function (req,res,next){
     } 
     catch (err) {
         console.log("This is the error :", err.message)
-        res.status(500).send({ msg: "Error", error: err.message })
+        res.status(500).send({ status : false, error: err.message })
     }
     }
 
@@ -30,7 +30,7 @@ let authorise= async function (req,res,next){
     
         let userInfo = await userModel.findById(id)
         if(!userInfo)
-        res.status(404).send({status: false, msg: "please provide valid user ID"})
+        res.status(400).send({status: false, msg: "please provide valid user ID"})
         
         if(userInfo.isDeleted == true)
         res.status(404).send({status: false, msg: "no such user found"})
@@ -44,8 +44,7 @@ let authorise= async function (req,res,next){
         next()
     }
     catch (err) {
-        console.log("This is the error :", err.message)
-        res.status(500).send({ msg: "Error", error: err.message })
+        res.status(500).send({ status : false, error: err.message })
     }
 }
     

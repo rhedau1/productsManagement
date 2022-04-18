@@ -19,4 +19,4 @@ app.listen(process.env.PORT || 3000, function () {
     console.log("Express app in running on PORT " + (process.env.PORT || 3000))
 });
 
-// salt ko main password se mix krte hai is process ko hasing kehte hai
+

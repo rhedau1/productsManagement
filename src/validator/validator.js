@@ -10,6 +10,23 @@ const isValidBody = function (requestBody) {
     return Object.keys(requestBody).length > 0;
 }
 
+
+
+
+const isValidName = function (name){
+    if(!(/^[a-z ,.'-]+$/i.test(name))){
+       return false
+    }
+    return true
+}
+
+const validQuantity = function isInteger(value) {
+    if(value < 1) return false
+     if(value % 1 == 0 ) return true
+}
+
+
+
 const isValidobjectId = (objectId) => {
     return mongoose.Types.ObjectId.isValid(objectId)
 }
@@ -28,6 +45,12 @@ const isValidNumber = function (value) {
         return false
     }
     return true
+}
+
+const validPincode = function (value){
+    if(!(/^[1-9][0-9]{5}$/.test(value.trim()))){
+        return false
+    }
 }
 
 const isValidPassword = function(value) {
@@ -63,3 +86,6 @@ module.exports.isValidNumber = isValidNumber
 module.exports.isValidPassword = isValidPassword
 module.exports.isValidPrice = isValidPrice
 module.exports.isValidSize = isValidSize
+module.exports.validPincode = validPincode
+module.exports.isValidName = isValidName
+module.exports.validQuantity = validQuantity

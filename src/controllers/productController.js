@@ -50,19 +50,20 @@ const createProduct = async function(req,res) {
             return res.status(400).send({ status: false, msg: "Product details must be present"})
         }
 
-        // Validate query (it must not be present)
-        const query = req.query;
-        if(validator.isValidBody(query)) {
-            return res.status(400).send({ status: false, msg: "Invalid parameters"});
-        }
+        // // Validate query (it must not be present)
+        // const query = req.query;
+        // if(validator.isValidBody(query)) {
+        //     return res.status(400).send({ status: false, msg: "Invalid parameters"});
+        // }
 
         // Validate params (it must not be present)
-        const params = req.params;
-        if(validator.isValidBody(params)) {
-            return res.status(400).send({ status: false, msg: "Invalid parameters"});
-        }
+        // const params = req.params;
+        // if(validator.isValidBody(params)) {
+        //     return res.status(400).send({ status: false, msg: "Invalid parameters"});
+        // }
 
-
+         //--------destructuring------------------------
+         
         const {title, description, price, currencyId, currencyFormat,isFreeShipping,style, availableSizes,installments} = body
 
         // Validate title
@@ -110,7 +111,7 @@ const createProduct = async function(req,res) {
             title, description, price, currencyId: "₹", currencyFormat: "INR",isFreeShipping, productImage: uploadedFileURL, style: style, availableSizes, installments
         }
         let productData = await productModel.create(product)
-        return res.status(201).send({status: true, msg:"Product updated", data: productData})
+        return res.status(201).send({status: true, msg:"Product created successfully", data: productData})
         }
         else{
             return res.status(400).send({status: false, msg: "Product image is required"})
@@ -138,16 +139,16 @@ const getProduct = async function(req,res) {
     try{
         let size = req.query.size
         let name = req.query.name
-        let priceGreaterThan = req.query.priceGreaterThan
+        let priceGreaterThan = req.query.priceGreaterThan 
         let priceLessThan = req.query.priceLessThan
         let priceSort = req.query.priceSort
 
 
         // Validate of body(It must not be present)
-        const body = req.body;
-        if(validator.isValidBody(body)) {
-            return res.status(400).send({ status: false, msg: "Body must not be present"})
-        }
+        // const body = req.body;
+        // if(validator.isValidBody(body)) {
+        //     return res.status(400).send({ status: false, msg: "Body must not be present"})
+        // }
 
         // Validate params(it must not be present)
         const params = req.params;
@@ -314,7 +315,7 @@ try{
          res.status(400).send({status : false, msg : "this product is already deleted"})
      }
 
-     const deleteProduct = await productModel.findOneAndUpdate({_id : productId}, {$set: {isdeleted : true, deletedAt : new Date()} } )
+     const deleteProduct = await productModel.findOneAndUpdate({_id : productId}, {$set: {isDeleted : true , deletedAt : new Date()} }  ,{new : true} )
 
      return res.status(200).send({status : true, msg : "Product deleted Successfully."})
 
