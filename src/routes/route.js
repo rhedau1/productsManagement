@@ -32,11 +32,11 @@ router.delete("/products/:productId", productController.deleteProduct)
 //***************************cart apis********************************************************
 
 
-router.post("/users/:userId/cart" , cartController.creatingCart)
+router.post("/users/:userId/cart" , middleware.authenticate, middleware.authorise, cartController.creatingCart)
 
-router.get("/users/:userId/cart",cartController.getCart)
+router.get("/users/:userId/cart", middleware.authenticate, middleware.authorise, cartController.getCart)
 
-router.delete("/users/:userId/cart",cartController.deleteCart)
+router.delete("/users/:userId/cart", middleware.authenticate, middleware.authorise, cartController.deleteCart)
 
 
 
