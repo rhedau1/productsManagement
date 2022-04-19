@@ -5,6 +5,7 @@ const productModel = require("../Models/productModel")
 
 
 
+
 //************************************CREATE CART***********************************************************************
 
 
@@ -58,6 +59,7 @@ const creatingCart = async (req, res) => {
                 ],
                 totalPrice: findProduct.price * quantity,
                 totalItems: 1,
+               
             };
             const createCart = await cartModel.create(cartData);
             return res.status(201).send({ status: true, msg: `Cart created successfully`, data: createCart });
@@ -72,6 +74,7 @@ const creatingCart = async (req, res) => {
             for (i in arr) {
                 if (arr[i].productId.toString() === productId) {
                     arr[i].quantity += quantity;
+                    //arr[i].quantity = arr[i].quantity + quantity
 
                     let updatedCart = {
                         items: arr,
@@ -260,12 +263,12 @@ const deleteCart = async (req, res) => {
         }
         const findUser = await userModel.findById({ _id: userId });
         if (!findUser) {
-            return res.status(400).send({ status: false, msg: "User does not exits by ${userId}" });
+            return res.status(400).send({ status: false, msg: `User does not exits by ${userId}` });
         }
 
         const findCart = await cartModel.findOne({ userId: userId });
         if (!findCart) {
-            return res.status(400).send({ status: false, msg: "Cart doesn't exits by ${userId}" });
+            return res.status(400).send({ status: false, msg: `Cart doesn't exits by ${userId}` });
         }
         const deleteCart = await cartModel.findOneAndUpdate({ userId: userId },
             {
@@ -279,7 +282,7 @@ const deleteCart = async (req, res) => {
 
     }
     catch (err) {
-        return res.status(500).send({ status: false, msg: "Error is :" + err });
+        return res.status(500).send({ status: false, msg: err.message});
     }
 }
 

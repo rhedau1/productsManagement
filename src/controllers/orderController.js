@@ -10,7 +10,7 @@ const createOrder = async function (req, res) {
 
         let userId = req.params.userId
         let orderBody = req.body
-        let tokenUserId = req.userId
+        
 
         if (!validator.isValidobjectId(userId.trim())) {
             return res.status(400).send({ status: false, message: 'Please provide valid user id in Params' })
@@ -94,7 +94,7 @@ const updateOrder = async function (req, res) {
 
         let userId = req.params.userId
         let updateBody = req.body
-        let tokenUserId = req.userId
+       
 
         if (!validator.isValidobjectId(userId.trim())) {
             return res.status(400).send({ status: false, message: 'Please provide valid user id in Params' })

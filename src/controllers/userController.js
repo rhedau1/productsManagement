@@ -52,31 +52,31 @@ const createUser = async function (req, res) {
 
     if (!fname) {
       return res
-        .status(500)
+        .status(400)
         .send({ status: false, msg: "please provide first name" });
     }
 
     if (!validator.isValidName(fname)) {
       return res
         .status(400)
-        .send({ status: false, msg: "please provide valid name" });
+        .send({ status: false, msg: "please provide valid first name" });
     }
 
     if (!lname) {
       return res
-        .status(500)
+        .status(400)
         .send({ status: false, msg: "please provide last name" });
     }
 
     if (!validator.isValidName(lname)) {
       return res
         .status(400)
-        .send({ status: false, msg: "please provide valid name" });
+        .send({ status: false, msg: "please provide valid last name" });
     }
 
     if (!email) {
       return res
-        .status(500)
+        .status(400)
         .send({ status: false, msg: "please provide email id" });
     }
 
@@ -99,7 +99,7 @@ const createUser = async function (req, res) {
 
     if (!phone) {
       return res
-        .status(500)
+        .status(400)
         .send({ status: false, msg: "please provide phone no" });
     }
 
@@ -122,7 +122,7 @@ const createUser = async function (req, res) {
 
     if (!password) {
       return res
-        .status(500)
+        .status(400)
         .send({ status: false, msg: "please provide password" });
     }
 
@@ -131,7 +131,7 @@ const createUser = async function (req, res) {
         .status(400)
         .send({
           status: false,
-          msg: "please provide valid and strong password",
+          msg: "please provide strong and valid password including eg. 'A-Z , a-z , 0-9 , @'",
         });
     }
 
@@ -184,7 +184,7 @@ const createUser = async function (req, res) {
     ) {
       return res
         .status(400)
-        .send({ status: false, msg: "Billing address details is/are missing" });
+        .send({ status: false, msg: "street , city and pincode are mandatory" });
     }
 
     if (files && files.length > 0) {
@@ -223,9 +223,8 @@ const createUser = async function (req, res) {
 
 const userLogin = async function (req, res) {
   try {
-    let loginBody = req.body;
-    let { email, password } = loginBody;
-    if (Object.keys(loginBody) == 0) {
+    let { email, password } = req.body;
+    if (Object.keys(req.body) == 0) {
       return res
         .status(400)
         .send({ status: false, msg: "please provide email or password" });
@@ -277,7 +276,7 @@ const userLogin = async function (req, res) {
       }
     }
   } catch (err) {
-    res.status(500).send({ status: false, msg: err.msg });
+    res.status(500).send({ status: false, msg: err.message });
   }
 };
 

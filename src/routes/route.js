@@ -43,7 +43,7 @@ router.delete("/products/:productId", productController.deleteProduct)
 
 
 
-router.post("/users/:userId/cart" , middleware.authenticate, middleware.authorise, cartController.creatingCart)
+router.post("/users/:userId/cart" ,  middleware.authenticate, middleware.authorise, cartController.creatingCart)
 
 router.put("/users/:userId/cart", middleware.authenticate, middleware.authorise, cartController.updateCart)
 
@@ -57,9 +57,9 @@ router.delete("/users/:userId/cart", middleware.authenticate, middleware.authori
 
 
 
-router.post("/users/:userId/orders", orderController.createOrder)
+router.post("/users/:userId/orders",  middleware.authenticate, middleware.authorise, orderController.createOrder)
 
-router.put("/users/:userId/orders",  orderController.updateOrder)
+router.put("/users/:userId/orders",  middleware.authenticate, middleware.authorise,  orderController.updateOrder)
 
 
 

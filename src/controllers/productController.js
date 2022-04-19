@@ -1,10 +1,14 @@
 const productModel = require("../Models/productModel")
 const aws = require("aws-sdk")
-//const mongoose = require("mongoose")
+
 const validator = require('../validator/validator');
 
 
+
 // ********************************************* AWS-S3 ****************************************************************** //
+
+
+
 
 aws.config.update({
     accessKeyId: "AKIAY3L35MCRVFM24Q7U",  // id
@@ -132,13 +136,13 @@ const getProduct = async function(req,res) {
         let priceGreaterThan = req.query.priceGreaterThan 
         let priceLessThan = req.query.priceLessThan
         let priceSort = req.query.priceSort
-
+    
 
         let data = {}
 
         // To search size
         if(size) {
-            let sizeSearch = await productModel.find({availableSizes: size, isDeleted: false}).sort({price: priceSort})
+            let sizeSearch = await productModel.find({availableSizes: size, isDeleted: false}).sort({price:priceSort})
 
             if(sizeSearch.length !== 0) {
                 return res.status(200).send({ status: true, msg: "Success", data: sizeSearch})
@@ -150,7 +154,7 @@ const getProduct = async function(req,res) {
 
         // To find products with name
         if(name) {
-            let nameSearch = await productModel.find({title: {$regex: name}, isDeleted: false}).sort({price:priceSort})
+            let nameSearch = await productModel.find({title: name , isDeleted: false}).sort({price:priceSort})
 
             if(nameSearch.length !== 0) {
                 return res.status(200).send({status: true, msg: "Success", data: nameSearch})
@@ -162,11 +166,11 @@ const getProduct = async function(req,res) {
 
         // To find the price
         if(priceGreaterThan) {
-            data["$gt"] = priceGreaterThan
+            data.$gt= priceGreaterThan
         }
 
         if(priceLessThan) {
-            data["$lt"] = priceLessThan
+            data.$lt = priceLessThan
         }
 
         if(priceLessThan || priceGreaterThan) {
