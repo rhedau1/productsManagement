@@ -39,6 +39,8 @@ aws.config.update({
 
 // ************************************** POST /products ************************************************************ //
 
+
+
 const createProduct = async function(req,res) {
     try {
         const body = req.body
@@ -119,8 +121,8 @@ const createProduct = async function(req,res) {
 
     }
     catch (err) {
-        console.log("This is the error :", err.message)
-        res.status(500).send({ msg: "Error", error: err.message })
+        console.log("This is the error :", err.msg)
+        res.status(500).send({ msg: "Error", error: err.msg })
     }
 }
 
@@ -213,8 +215,8 @@ const getProduct = async function(req,res) {
 
     }
     catch (err) {
-        console.log("This is the error :", err.message)
-        res.status(500).send({ msg: "Error", error: err.message })
+        console.log("This is the error :", err.msg)
+        res.status(500).send({ msg: "Error", error: err.msg })
     }
 }
 
@@ -231,7 +233,7 @@ try{
      const productId = req.params.productId
 
      if (!(/^[0-9a-fA-F]{24}$/.test(productId))) {
-        return res.status(400).send({ status: false, message: 'please provide valid product Id' })
+        return res.status(400).send({ status: false, msg: 'please provide valid product Id' })
       }
 
      const productDetails = await productModel.findById({ _id: productId,  isDeleted: false})
@@ -243,7 +245,7 @@ try{
        return res.status(200).send({status : false , msg : "success" , productDetails:productDetails})
     }
 catch(err){
-    res.status(500).send({msg : err.message})
+    res.status(500).send({msg : err.msg})
     }
 }
 
@@ -287,8 +289,8 @@ const updateProduct = async function(req,res) {
         
     }
     catch (err) {
-        console.log("This is the error :", err.message)
-        res.status(500).send({ msg: "Error", error: err.message })
+        console.log("This is the error :", err.msg)
+        res.status(500).send({ msg: "Error", error: err.msg })
     }
 }
 
@@ -302,7 +304,7 @@ try{
      const productId = req.params.productId
 
      if (!(/^[0-9a-fA-F]{24}$/.test(productId))) {
-        return res.status(400).send({ status: false, message: 'please provide valid product Id' })
+        return res.status(400).send({ status: false, msg: 'please provide valid product Id' })
       }
 
      const productDetails = await productModel.findById({_id : productId})
@@ -321,7 +323,7 @@ try{
 
     }
     catch(err){
-        res.status(500).send({msg : err.message})
+        res.status(500).send({msg : err.msg})
     }
 
 }

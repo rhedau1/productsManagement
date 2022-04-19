@@ -1,9 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/userController");
 const middleware = require("../middleware/auth");
+const userController = require("../controllers/userController");
 const productController = require("../controllers/productController")
 const cartController = require("../controllers/cartController")
+const orderController = require("../controllers/orderController")
+
+
+
+
+//**********************************user apis******************************************************************
+
+
 
 router.post("/register", userController.createUser);
 
@@ -15,7 +23,8 @@ router.put("/user/:userId/profile", middleware.authenticate, middleware.authoris
 
 
 
-//***************product apis*************************************************************
+//********************************product apis************************************************************************
+
 
 
 router.post("/products", productController.createProduct)
@@ -29,14 +38,28 @@ router.put("/products/:productId", productController.updateProduct)
 router.delete("/products/:productId", productController.deleteProduct)
 
 
-//***************************cart apis********************************************************
+
+//******************************cart apis*****************************************************************************
+
 
 
 router.post("/users/:userId/cart" , middleware.authenticate, middleware.authorise, cartController.creatingCart)
 
+router.put("/users/:userId/cart", middleware.authenticate, middleware.authorise, cartController.updateCart)
+
 router.get("/users/:userId/cart", middleware.authenticate, middleware.authorise, cartController.getCart)
 
 router.delete("/users/:userId/cart", middleware.authenticate, middleware.authorise, cartController.deleteCart)
+
+
+
+//*********************************order apis**********************************************************************
+
+
+
+router.post("/users/:userId/orders", orderController.createOrder)
+
+router.put("/users/:userId/orders",  orderController.updateOrder)
 
 
 

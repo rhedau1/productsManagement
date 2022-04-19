@@ -53,11 +53,11 @@
 - Save password in encrypted format. (use bcrypt)
 - __Response format__
   - _**On success**_ - Return HTTP status 201. Also return the user document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 ```yaml
 {
     "status": true,
-    "message": "User created successfully",
+    "msg": "User created successfully",
     "data": {
         "fname": "John",
         "lname": "Doe",
@@ -91,11 +91,11 @@
 > **_NOTE:_** There is a slight change in response body. You should also return userId in addition to the JWT token.
 - __Response format__
   - _**On success**_ - Return HTTP status 200 and JWT token in response body. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 ```yaml
 {
     "status": true,
-    "message": "User login successfull",
+    "msg": "User login successfull",
     "data": {
         "userId": "6165f29cfe83625cf2c10a5c",
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTYyODc2YWJkY2I3MGFmZWVhZjljZjUiLCJpYXQiOjE2MzM4NDczNzYsImV4cCI6MTYzMzg4MzM3Nn0.PgcBPLLg4J01Hyin-zR6BCk7JHBY-RpuWMG_oIK7aV8"
@@ -108,11 +108,11 @@
 - Make sure that userId in url param and in token is same
 - __Response format__
   - _**On success**_ - Return HTTP status 200 and returns the user document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 ```yaml
 {
     "status": true,
-    "message": "User profile details",
+    "msg": "User profile details",
     "data": {
         "address": {
             "shipping": {
@@ -146,11 +146,11 @@
 - Make sure that userId in url param and in token is same
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the updated user document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 ```yaml
 {
     "status": true,
-    "message": "User profile updated",
+    "msg": "User profile updated",
     "data": {
         "address": {
             "shipping": {
@@ -210,7 +210,7 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Upload product image to S3 bucket and save image public url in document.
 - __Response format__
   - _**On success**_ - Return HTTP status 201. Also return the product document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### GET /products
 - Returns all products in the collection that aren't deleted.
@@ -226,26 +226,26 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   _eg_ /products?size=XL&name=Nit%20grit
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the product documents. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### GET /products/:productId
 - Returns product details by product id
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the product documents. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### PUT /products/:productId
 - Updates a product by changing at least one or all fields
 - Check if the productId exists (must have isDeleted false and is present in collection). If it doesn't, return an HTTP status 404 with a response body like [this](#error-response-structure)
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the updated product document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### DELETE /products/:productId
 - Deletes a product by product id if it's not already deleted
 - __Response format__
   - _**On success**_ - Return HTTP status 200. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 
 
@@ -280,7 +280,7 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Get product(s) details in response body.
 - __Response format__
   - _**On success**_ - Return HTTP status 201. Also return the cart document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### PUT /users/:userId/cart (Remove product / Reduce a product's quantity from the cart)
 - Updates a cart by either decrementing the quantity of a product by 1 or deleting a product from the cart.
@@ -295,7 +295,7 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Check if the productId exists and is not deleted before updating the cart.
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the updated cart document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### GET /users/:userId/cart
 - Returns cart summary of the user.
@@ -305,7 +305,7 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Get product(s) details in response body.
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Return the cart document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ### DELETE /users/:userId/cart
 - Deletes the cart for the user.
@@ -314,8 +314,8 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Make sure the user exist
 - cart deleting means array of items is empty, totalItems is 0, totalPrice is 0.
 - __Response format__
-  - _**On success**_ - Return HTTP status 204. Return a suitable message. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On success**_ - Return HTTP status 204. Return a suitable msg. The response should be a JSON object like [this](#successful-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 
 
@@ -350,7 +350,7 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Get cart details in the request body
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the order document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ## PUT /users/:userId/orders
 - Updates an order status
@@ -358,10 +358,10 @@ Send [form-data](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 - Make sure the user exist
 - Get order id in request body
 - Make sure the order belongs to the user
-- Make sure that only a cancellable order could be canceled. Else send an appropriate error message and response.
+- Make sure that only a cancellable order could be canceled. Else send an appropriate error msg and response.
 - __Response format__
   - _**On success**_ - Return HTTP status 200. Also return the updated order document. The response should be a JSON object like [this](#successful-response-structure)
-  - _**On error**_ - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
+  - _**On error**_ - Return a suitable error msg with a valid HTTP status code. The response should be a JSON object like [this](#error-response-structure)
 
 ## Testing 
 - To test these apis create a new collection in Postman named Project 5 Shopping Cart
@@ -378,7 +378,7 @@ Refer below sample
 ```yaml
 {
   status: true,
-  message: 'Success',
+  msg: 'Success',
   data: {
 
   }
@@ -388,7 +388,7 @@ Refer below sample
 ```yaml
 {
   status: false,
-  message: ""
+  msg: ""
 }
 ```
 

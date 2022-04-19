@@ -11,6 +11,9 @@ const isValidBody = function (requestBody) {
 }
 
 
+const isValidStatus = function(status) {
+    return ['pending', 'completed', 'cancelled'].indexOf(status) !== -1
+}
 
 
 const isValidName = function (name){
@@ -78,14 +81,5 @@ const isValidSize = function(value) {
 
 
 
-module.exports.isValid = isValid
-module.exports.isValidBody = isValidBody
-module.exports.isValidobjectId = isValidobjectId
-module.exports.isValidEmail = isValidEmail
-module.exports.isValidNumber = isValidNumber
-module.exports.isValidPassword = isValidPassword
-module.exports.isValidPrice = isValidPrice
-module.exports.isValidSize = isValidSize
-module.exports.validPincode = validPincode
-module.exports.isValidName = isValidName
-module.exports.validQuantity = validQuantity
+module.exports = { isValid , isValidBody , isValidobjectId , isValidEmail , isValidNumber , isValidPassword , isValidPrice , isValidSize , validPincode , isValidName , validQuantity , isValidStatus}
+
