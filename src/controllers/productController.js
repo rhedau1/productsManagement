@@ -44,25 +44,13 @@ aws.config.update({
 const createProduct = async function(req,res) {
     try {
         const body = req.body
-        // const body = req.body.data
-        // const JSONbody = JSON.parse(body)
-
+       
         // Validate body
         if(!validator.isValidBody(body)) {
             return res.status(400).send({ status: false, msg: "Product details must be present"})
         }
 
-        // // Validate query (it must not be present)
-        // const query = req.query;
-        // if(validator.isValidBody(query)) {
-        //     return res.status(400).send({ status: false, msg: "Invalid parameters"});
-        // }
-
-        // Validate params (it must not be present)
-        // const params = req.params;
-        // if(validator.isValidBody(params)) {
-        //     return res.status(400).send({ status: false, msg: "Invalid parameters"});
-        // }
+       
 
          //--------destructuring------------------------
          
@@ -145,18 +133,6 @@ const getProduct = async function(req,res) {
         let priceLessThan = req.query.priceLessThan
         let priceSort = req.query.priceSort
 
-
-        // Validate of body(It must not be present)
-        // const body = req.body;
-        // if(validator.isValidBody(body)) {
-        //     return res.status(400).send({ status: false, msg: "Body must not be present"})
-        // }
-
-        // Validate params(it must not be present)
-        const params = req.params;
-        if(validator.isValidBody(params)) {
-            return res.status(400).send({status: false, msg: "Invalid request"})
-        }
 
         let data = {}
 
@@ -259,12 +235,6 @@ const updateProduct = async function(req,res) {
         const body = req.body
          if(!validator.isValidBody(body)) {
             return res.status(400).send({ status: false, msg: "Product details must be present"})
-        }
-
-        // Validate query (it must not be present)
-        const query = req.query;
-        if(validator.isValidBody(query)) {
-            return res.status(400).send({ status: false, msg: "Invalid parameters"});
         }
 
         const params = req.params;

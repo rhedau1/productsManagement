@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const isValid = function (value) {
-    if (typeof value === 'undefined' || value === null) return false
+    if (typeof value === undefined || value === null) return false
     if (typeof value === 'string' && value.trim().length === 0) return false 
     return true;
 } 
@@ -42,7 +42,7 @@ const isValidEmail = function (value) {
 }
 
 const isValidNumber = function (value) {
-    // if (!(/^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$/.test(value.trim()))) {
+  
         if (!(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/.test(value.trim()))) {
             
         return false

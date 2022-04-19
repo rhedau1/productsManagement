@@ -22,10 +22,7 @@ const createOrder = async function (req, res) {
             return res.status(400).send({ status: false, message: `Provided UserId ${userId} does not exists` })
         }
 
-        // if (user._id != tokenUserId) {
-        //     return res.status(401).send({ status: false, message: 'Unauthorized access!' })
-        // }
-
+      
         if (!validator.isValidBody(orderBody)) {
             return res.status(400).send({ status: false, message: 'Provide a order details in body to add craete a order' })
         }
@@ -109,10 +106,7 @@ const updateOrder = async function (req, res) {
             return res.status(400).send({ status: false, message: `Provided UserId ${userId} Does not exists` })
         }
         
-        // if (user._id != tokenUserId) {
-        //     return res.status(401).send({ status: false, message: 'Unauthorized access!' })
-        // }
-
+        
         if (!validator.isValidBody(updateBody)) {
             return res.status(400).send({ status: false, message: 'Provide a orderId in body to update a order' })
         }
