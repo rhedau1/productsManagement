@@ -1,7 +1,7 @@
 const cartModel = require("../models/cartModel")
 const validator = require("../validator/validator")
 const userModel = require("../models/userModel")
-const productModel = require("../Models/productModel")
+const productModel = require("../models/productModel")
 
 
 
@@ -14,9 +14,10 @@ const productModel = require("../Models/productModel")
 
 const creatingCart = async (req, res) => {
     try {
-        const userId = req.params.userId;
+        const userId = req.params.userId;   
         const requestBody = req.body;
         const { productId, quantity } = requestBody;
+
 
         if (!validator.isValidBody(requestBody)) {
             return res.status(400).send({ status: false, msg: "Please provide valid request body" });

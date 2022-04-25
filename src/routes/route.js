@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const middleware = require("../middleware/auth");
 const userController = require("../controllers/userController");
-const productController = require("../controllers/productController")
+const productController1 = require("../controllers/productController1")
 const cartController = require("../controllers/cartController")
 const orderController = require("../controllers/orderController")
 
@@ -27,15 +27,15 @@ router.put("/user/:userId/profile", middleware.authenticate, middleware.authoris
 
 
 
-router.post("/products", productController.createProduct)
+router.post("/products", productController1.productCreation)
 
-router.get("/products", productController.getProduct)
+router.get("/products", productController1.getAllProducts)
 
-router.get("/products/:productId", productController.getProductById)
+router.get("/products/:productId", productController1.getProductsById)
 
-router.put("/products/:productId", productController.updateProduct)
+router.put("/products/:productId", productController1.updateProduct)
 
-router.delete("/products/:productId", productController.deleteProduct)
+router.delete("/products/:productId", productController1.deleteProduct)
 
 
 

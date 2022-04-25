@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const isValid = function (value) {
     if (typeof value === undefined || value === null) return false
-    if (typeof value === 'string' && value.trim().length === 0) return false 
+    if (typeof value === 'String' && value.trim().length === 0) return false 
     return true;
 } 
 
@@ -74,6 +74,14 @@ const isValidSize = function(value) {
     return ["S", "XS", "M", "X", "L", "XXL", "XL"].indexOf(value) !== -1
 }
 
+const validInstallment = function isInteger(value) {
+    return value % 1 == 0;
+    
+}
+const validString = function(value) {
+    if (typeof value === 'string' && value.trim().length === 0) return false
+    return true;
+}
 
 
 
@@ -81,5 +89,5 @@ const isValidSize = function(value) {
 
 
 
-module.exports = { isValid , isValidBody , isValidobjectId , isValidEmail , isValidNumber , isValidPassword , isValidPrice , isValidSize , validPincode , isValidName , validQuantity , isValidStatus}
+module.exports = { isValid , isValidBody , isValidobjectId , isValidEmail , isValidNumber , isValidPassword , isValidPrice , validString ,isValidSize , validPincode , isValidName , validQuantity , isValidStatus, validInstallment}
 
